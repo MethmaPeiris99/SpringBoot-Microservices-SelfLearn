@@ -5,7 +5,7 @@ public class Movie {
     private String movieName;
 
     public Movie(){
-        
+
     }
 
     public Movie(String movieId, String movieName) {
