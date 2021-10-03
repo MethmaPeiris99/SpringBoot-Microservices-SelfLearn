@@ -37,17 +37,17 @@ public class MovieCatalogResource {
 
         // Get all movie details from movie-info-service for each movie id
         return ratings.stream().map(rating -> {
-//            Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
+            Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
 
             /**
              * Return an instance of movie with the details consist in passed URL
              */
-            Movie movie = webClientBuilder.build()
-                    .get() //Request type needs to be called
-                    .uri("http://localhost:8082/movies/" + rating.getMovieId()) //URl needs to be accessed
-                    .retrieve() //Indicates that the data is fetched from the URL
-                    .bodyToMono(Movie.class) //Convert the fetched data into an object with the type of the passed object type
-                    .block();
+//            Movie movie = webClientBuilder.build()
+//                    .get() //Request type needs to be called
+//                    .uri("http://localhost:8082/movies/" + rating.getMovieId()) //URl needs to be accessed
+//                    .retrieve() //Indicates that the data is fetched from the URL
+//                    .bodyToMono(Movie.class) //Convert the fetched data into an object with the type of the passed object type
+//                    .block();
 
             return new CatalogItem(movie.getMovieName(), "Movie about 6 heroes", rating.getMovieRating());
         }).collect(Collectors.toList());
