@@ -25,7 +25,7 @@ public class RatingsDataResource {
                 new Rating("5678",10)
         );
         UserRating userRating = new UserRating();
-        userRating.setUserRating(ratings);
+        userRating.setUserRatingList(ratings);
         return userRating;
     }
 }
