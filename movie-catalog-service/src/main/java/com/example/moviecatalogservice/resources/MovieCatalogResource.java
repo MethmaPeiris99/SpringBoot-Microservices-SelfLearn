@@ -29,11 +29,11 @@ public class MovieCatalogResource {
 
         // Get all rated movie ids
         // ASSUMPTION : ratings list is the response received from ratings-data API
-        UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/"+userId, UserRating.class);
+        UserRating ratings = restTemplate.getForObject("http://ratings-data-service/ratingsdata/users/"+userId, UserRating.class);
 
         // Get all movie details from movie-info-service for each movie id
         return ratings.getUserRating().stream().map(rating -> {
-            Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
+            Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
 
             /**
              * Return an instance of movie with the details consist in passed URL
